@@ -43,7 +43,7 @@ def simulate_girsanov(theta: float, T: float, steps: int, seed: int = None) -> T
     return t, W, W_tilde
 
 def plot_binomial_path(path: list, output_path: Path):
- """Plot binomial tree path """
+    """Plot binomial tree path """
     fig, ax = plt.subplots(figsize=(10, 4))
     ax.plot(path, color="#4A90A4", linewidth=1.2)
     ax.set_xlabel("Step")
@@ -52,7 +52,7 @@ def plot_binomial_path(path: list, output_path: Path):
     plt.close()
 
 def plot_exponential_martingale(t: np.ndarray, Z: np.ndarray, output_path: Path):
- """Plot exponential martingale """
+    """Plot exponential martingale """
     fig, ax = plt.subplots(figsize=(10, 4))
     ax.plot(t, Z, color="#4A90A4", linewidth=1.2)
     ax.set_xlabel("Time")
@@ -61,7 +61,7 @@ def plot_exponential_martingale(t: np.ndarray, Z: np.ndarray, output_path: Path)
     plt.close()
 
 def plot_girsanov_transformation(t: np.ndarray, W: np.ndarray, W_tilde: np.ndarray, output_path: Path):
- """Plot Girsanov transformation """
+    """Plot Girsanov transformation """
     fig, ax = plt.subplots(figsize=(10, 4))
     ax.plot(t, W, label="Original Brownian Motion", color="#4A90A4", linewidth=1.2)
     ax.plot(t, W_tilde, label="Shifted (Girsanov)", color="#D4A574", linewidth=1.2, linestyle='--')
