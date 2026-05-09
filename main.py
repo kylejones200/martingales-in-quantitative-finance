@@ -35,7 +35,7 @@ def main():
     output_dir = Path(args.output_dir) if args.output_dir else Path(config['output']['figures_dir'])
     output_dir.mkdir(exist_ok=True)
     
-        binomial_path = simulate_binomial_tree(
+    binomial_path = simulate_binomial_tree(
         config['simulation']['binomial']['S0'],
         config['simulation']['binomial']['u'],
         config['simulation']['binomial']['d'],
@@ -45,7 +45,7 @@ def main():
     )
     plot_binomial_path(binomial_path, output_dir / 'binomial_path.png')
     
-        t, W, Z = simulate_exponential_martingale(
+    t, W, Z = simulate_exponential_martingale(
         config['simulation']['exponential_martingale']['theta'],
         config['simulation']['exponential_martingale']['T'],
         config['simulation']['exponential_martingale']['steps'],
@@ -53,7 +53,7 @@ def main():
     )
     plot_exponential_martingale(t, Z, output_dir / 'exponential_martingale.png')
     
-        t, W, W_tilde = simulate_girsanov(
+    t, W, W_tilde = simulate_girsanov(
         config['simulation']['girsanov']['theta'],
         config['simulation']['girsanov']['T'],
         config['simulation']['girsanov']['steps'],
