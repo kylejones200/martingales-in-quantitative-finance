@@ -42,32 +42,35 @@ def simulate_girsanov(theta: float, T: float, steps: int, seed: int = None) -> T
     W_tilde = W + theta * t
     return t, W, W_tilde
 
-def plot_binomial_path(path: list, output_path: Path):
+def plot_binomial_path(path: list, output_path: Path, plot: bool = False):
     """Plot binomial tree path """
-    fig, ax = plt.subplots(figsize=(10, 4))
-    ax.plot(path, color="#4A90A4", linewidth=1.2)
-    ax.set_xlabel("Step")
-    ax.set_ylabel("Price")
-    plt.savefig(output_path, dpi=100, bbox_inches="tight")
-    plt.close()
+    if plot:
+        fig, ax = plt.subplots(figsize=(10, 4))
+        ax.plot(path, color="#4A90A4", linewidth=1.2)
+        ax.set_xlabel("Step")
+        ax.set_ylabel("Price")
+        plt.savefig(output_path, dpi=100, bbox_inches="tight")
+        plt.close()
 
-def plot_exponential_martingale(t: np.ndarray, Z: np.ndarray, output_path: Path):
+def plot_exponential_martingale(t: np.ndarray, Z: np.ndarray, output_path: Path, plot: bool = False):
     """Plot exponential martingale """
-    fig, ax = plt.subplots(figsize=(10, 4))
-    ax.plot(t, Z, color="#4A90A4", linewidth=1.2)
-    ax.set_xlabel("Time")
-    ax.set_ylabel("Z(t)")
-    plt.savefig(output_path, dpi=100, bbox_inches="tight")
-    plt.close()
+    if plot:
+        fig, ax = plt.subplots(figsize=(10, 4))
+        ax.plot(t, Z, color="#4A90A4", linewidth=1.2)
+        ax.set_xlabel("Time")
+        ax.set_ylabel("Z(t)")
+        plt.savefig(output_path, dpi=100, bbox_inches="tight")
+        plt.close()
 
-def plot_girsanov_transformation(t: np.ndarray, W: np.ndarray, W_tilde: np.ndarray, output_path: Path):
+def plot_girsanov_transformation(t: np.ndarray, W: np.ndarray, W_tilde: np.ndarray, output_path: Path, plot: bool = False):
     """Plot Girsanov transformation """
-    fig, ax = plt.subplots(figsize=(10, 4))
-    ax.plot(t, W, label="Original Brownian Motion", color="#4A90A4", linewidth=1.2)
-    ax.plot(t, W_tilde, label="Shifted (Girsanov)", color="#D4A574", linewidth=1.2, linestyle='--')
-    ax.set_xlabel("Time")
-    ax.set_ylabel("Value")
-    ax.legend(loc='best')
-    plt.savefig(output_path, dpi=100, bbox_inches="tight")
-    plt.close()
+    if plot:
+        fig, ax = plt.subplots(figsize=(10, 4))
+        ax.plot(t, W, label="Original Brownian Motion", color="#4A90A4", linewidth=1.2)
+        ax.plot(t, W_tilde, label="Shifted (Girsanov)", color="#D4A574", linewidth=1.2, linestyle='--')
+        ax.set_xlabel("Time")
+        ax.set_ylabel("Value")
+        ax.legend(loc='best')
+        plt.savefig(output_path, dpi=100, bbox_inches="tight")
+        plt.close()
 
