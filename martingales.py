@@ -1,3 +1,4 @@
+import signalplot
 import numpy as np
 import matplotlib.pyplot as plt
 import logging
@@ -5,11 +6,7 @@ import logging
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(message)s')
 
-plt.rcParams.update({
-    "font.family": "serif",
-    "axes.spines.top": False,
-    "axes.spines.right": False
-})
+signalplot.apply(font_family='serif')
 
 # Binomial Model with risk-neutral probabilities
 def simulate_binomial_tree(S0, u, d, r, steps):
