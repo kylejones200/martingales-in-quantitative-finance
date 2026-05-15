@@ -2,7 +2,6 @@
 
 import numpy as np
 from pathlib import Path
-from typing import Tuple
 import matplotlib.pyplot as plt
 import logging
 
@@ -20,7 +19,7 @@ def simulate_binomial_tree(S0: float, u: float, d: float, r: float, steps: int, 
         paths.append(paths[-1] * move)
     return paths
 
-def simulate_exponential_martingale(theta: float, T: float, steps: int, seed: int = None) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
+def simulate_exponential_martingale(theta: float, T: float, steps: int, seed: int = None) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
     """Simulate exponential martingale from Brownian motion."""
     if seed is not None:
         np.random.seed(seed)
@@ -31,7 +30,7 @@ def simulate_exponential_martingale(theta: float, T: float, steps: int, seed: in
     Z = np.exp(-theta * W - 0.5 * theta**2 * t)
     return t, W, Z
 
-def simulate_girsanov(theta: float, T: float, steps: int, seed: int = None) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
+def simulate_girsanov(theta: float, T: float, steps: int, seed: int = None) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
     """Simulate Girsanov change of measure (original and shifted Brownian motion)."""
     if seed is not None:
         np.random.seed(seed)
