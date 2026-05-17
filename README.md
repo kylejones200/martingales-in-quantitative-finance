@@ -52,3 +52,11 @@ Edit `config.yaml` to customize:
 - Simulations use random number generation. Set seed in config for reproducibility.
 - Binomial model assumes risk-neutral probabilities.
 - Girsanov transformation demonstrates measure change but doesn't optimize portfolios.
+
+## Disclaimer
+
+Educational/demo code only. Not financial, safety, or engineering advice. Use at your own risk. Verify results independently before any production or operational use.
+
+## License
+
+MIT — see [LICENSE](LICENSE).

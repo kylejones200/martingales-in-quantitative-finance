@@ -84,19 +84,21 @@ def plot_girsanov_transformation(
     plot: bool = False,
 ):
     """Plot Girsanov transformation"""
-    if plot:
-        fig, ax = plt.subplots(figsize=(10, 4))
-        ax.plot(t, W, label="Original Brownian Motion", color="#4A90A4", linewidth=1.2)
-        ax.plot(
-            t,
-            W_tilde,
-            label="Shifted (Girsanov)",
-            color="#D4A574",
-            linewidth=1.2,
-            linestyle="--",
-        )
-        ax.set_xlabel("Time")
-        ax.set_ylabel("Value")
-        ax.legend(loc="best")
-        plt.savefig(output_path, dpi=100, bbox_inches="tight")
-        plt.close()
+    if not plot:
+        return
+
+    fig, ax = plt.subplots(figsize=(10, 4))
+    ax.plot(t, W, label="Original Brownian Motion", color="#4A90A4", linewidth=1.2)
+    ax.plot(
+        t,
+        W_tilde,
+        label="Shifted (Girsanov)",
+        color="#D4A574",
+        linewidth=1.2,
+        linestyle="--",
+    )
+    ax.set_xlabel("Time")
+    ax.set_ylabel("Value")
+    ax.legend(loc="best")
+    plt.savefig(output_path, dpi=100, bbox_inches="tight")
+    plt.close()
