@@ -40,11 +40,9 @@ def simulate_girsanov(theta, T, steps):
     return t, W, W_tilde
 
 
-
 def main():
     # Plotting the binomial model path
     binomial_path = simulate_binomial_tree(S0=100, u=1.1, d=0.9, r=0.05, steps=50)
-
     plt.figure(figsize=(10, 4))
     plt.plot(binomial_path, label="Binomial Tree Path (Risk-Neutral)")
     plt.title("Binomial Model Path under Risk-Neutral Measure")
@@ -52,10 +50,8 @@ def main():
     plt.ylabel("Price")
     plt.savefig("binomial_path.png")
     plt.show()
-
     # Plot exponential martingale
     t, W, Z = simulate_exponential_martingale(theta=0.7, T=1, steps=1000)
-
     plt.figure(figsize=(10, 4))
     plt.plot(t, Z, label="Exponential Martingale")
     plt.title("Exponential Martingale from Brownian Motion")
@@ -63,10 +59,8 @@ def main():
     plt.ylabel("Z(t)")
     plt.savefig("exponential_martingale.png")
     plt.show()
-
     # Plot Girsanov transformation
     t, W, W_tilde = simulate_girsanov(theta=0.7, T=1, steps=1000)
-
     plt.figure(figsize=(10, 4))
     plt.plot(t, W, label="Original Brownian Motion")
     plt.plot(t, W_tilde, label="Shifted (Girsanov)", linestyle="--")

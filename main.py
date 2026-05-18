@@ -21,7 +21,7 @@ logging.basicConfig(
 )
 
 
-def load_config(config_path: Path = None) -> dict:
+def load_config(config_path: Path | None = None) -> dict:
     """Load configuration from YAML file."""
     if config_path is None:
         config_path = Path(__file__).parent / "config.yaml"
@@ -37,7 +37,6 @@ def main():
         "--output-dir", type=Path, default=None, help="Output directory for plots"
     )
     args = parser.parse_args()
-
     config = load_config(args.config)
     output_dir = (
         Path(args.output_dir)
@@ -45,7 +44,6 @@ def main():
         else Path(config["output"]["figures_dir"])
     )
     output_dir.mkdir(exist_ok=True)
-
     binomial_path = simulate_binomial_tree(
         config["simulation"]["binomial"]["S0"],
         config["simulation"]["binomial"]["u"],
@@ -55,7 +53,6 @@ def main():
         config["simulation"]["binomial"]["seed"],
     )
     plot_binomial_path(binomial_path, output_dir / "binomial_path.png")
-
     t, W, Z = simulate_exponential_martingale(
         config["simulation"]["exponential_martingale"]["theta"],
         config["simulation"]["exponential_martingale"]["T"],
@@ -63,7 +60,6 @@ def main():
         config["simulation"]["exponential_martingale"]["seed"],
     )
     plot_exponential_martingale(t, Z, output_dir / "exponential_martingale.png")
-
     t, W, W_tilde = simulate_girsanov(
         config["simulation"]["girsanov"]["theta"],
         config["simulation"]["girsanov"]["T"],
@@ -71,7 +67,6 @@ def main():
         config["simulation"]["girsanov"]["seed"],
     )
     plot_girsanov_transformation(t, W, W_tilde, output_dir / "girsanov_shift.png")
-
     logging.info(f"\nAnalysis complete. Figures saved to {output_dir}")
 
 
